@@ -22,7 +22,13 @@ app.get("/user/:id", (req, res) => {
   res.send(user);
 });
 
-app.post("/addUser", (req, res) => {
+app.get("/userbycity/:city", (req, res) => {
+  let city = req.params.city;
+   //TODO : get user by city
+  res.send(user);
+});
+
+app.post("/user", (req, res) => {
   let name = req.body.name;
   let age = req.body.age;
 
@@ -30,6 +36,20 @@ app.post("/addUser", (req, res) => {
   users.push(newUser);
 
   fs.writeFileSync("./users.json", JSON.stringify(users));
+  res.send({ success: true });
+});
+
+app.put("/user/:id", (req, res) => {
+  let id = req.params.id;
+  //TODO : add update function
+  
+  res.send({ success: true });
+});
+
+app.delete("/user/:id", (req, res) => {
+  let id = req.params.id;
+  //TODO : add delete function
+
   res.send({ success: true });
 });
 
